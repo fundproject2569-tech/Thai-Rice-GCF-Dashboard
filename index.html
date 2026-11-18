@@ -407,7 +407,7 @@
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>
           </svg>
-          ข้อมูล ณ 5 พ.ย. 2569
+          ข้อมูล ณ 17 พ.ย. 2569
         </div>
       </div>
     </header>
@@ -479,7 +479,7 @@
 
     <div class="footer-note">
       <strong>หมายเหตุ</strong>
-      *ข้อมูล ณ 5 พฤศจิกายน 2569<br>
+      *ข้อมูล ณ 17 พฤศจิกายน 2569<br>
       *** เนื่องจากบาง สนจ. ยังไม่ได้รับรายชื่อจากกรมการข้าว กรมส่งเสริมการเกษตร และ GIZ จึงยังไม่สามารถดำเนินการได้<br>
       ***จำนวน “ต้องดำเนินการเดือนละ” คำนวณจากยอดคงเหลือ ÷ 3 เดือนที่เหลือ (ธ.ค. 2569 – ก.พ. 2570)<br>
       ****อันดับจังหวัดคำนวณจากค่าเฉลี่ยเปอร์เซ็นต์ของ CS-FIN + CSI + CSL (เรียงจากสูงสุดไปน้อยที่สุด)<br>
@@ -489,27 +489,27 @@
 
   <script>
     const raw = [
-      { province:"ปทุมธานี",     cst:0,    csfin_t:260, csfin_r:0,   csfin_p:0,   csi_t:156, csi_r:0,   csi_p:0,   csl_t:5.2,  csl_r:0,    csl_p:0 },
-      { province:"อยุธยา",       cst:0,    csfin_t:260, csfin_r:0,   csfin_p:0,   csi_t:156, csi_r:0,   csi_p:0,   csl_t:5.2,  csl_r:0,    csl_p:0 },
-      { province:"อ่างทอง",      cst:112,  csfin_t:293, csfin_r:90,  csfin_p:30.7,csi_t:176, csi_r:62,  csi_p:35.2,csl_t:5.86, csl_r:0,    csl_p:0 },
-      { province:"ลพบุรี",       cst:310,  csfin_t:293, csfin_r:0,   csfin_p:0,   csi_t:176, csi_r:0,   csi_p:0,   csl_t:5.86, csl_r:0,    csl_p:0 },
-      { province:"สิงห์บุรี",     cst:146,  csfin_t:293, csfin_r:6,   csfin_p:2.0, csi_t:176, csi_r:6,   csi_p:3.4, csl_t:5.86, csl_r:0,    csl_p:0 },
-      { province:"ชัยนาท",       cst:404,  csfin_t:390, csfin_r:10,  csfin_p:2.6, csi_t:234, csi_r:10,  csi_p:4.3, csl_t:7.8,  csl_r:0,    csl_p:0 },
+      { province:"ปทุมธานี",     cst:156,  csfin_t:260, csfin_r:0,   csfin_p:0,   csi_t:156, csi_r:0,   csi_p:0,   csl_t:5.2,  csl_r:0,    csl_p:0 },
+      { province:"อยุธยา",       cst:65,   csfin_t:260, csfin_r:0,   csfin_p:0,   csi_t:156, csi_r:0,   csi_p:0,   csl_t:5.2,  csl_r:0,    csl_p:0 },
+      { province:"อ่างทอง",      cst:112,  csfin_t:293, csfin_r:90,  csfin_p:30.7,csi_t:176, csi_r:70,  csi_p:39.8,csl_t:5.86, csl_r:0,    csl_p:0 },
+      { province:"ลพบุรี",       cst:274,  csfin_t:293, csfin_r:0,   csfin_p:0,   csi_t:176, csi_r:0,   csi_p:0,   csl_t:5.86, csl_r:0,    csl_p:0 },
+      { province:"สิงห์บุรี",     cst:110,  csfin_t:293, csfin_r:6,   csfin_p:2.0, csi_t:176, csi_r:6,   csi_p:3.4, csl_t:5.86, csl_r:0,    csl_p:0 },
+      { province:"ชัยนาท",       cst:378,  csfin_t:390, csfin_r:10,  csfin_p:2.6, csi_t:234, csi_r:10,  csi_p:4.3, csl_t:7.8,  csl_r:0,    csl_p:0 },
       { province:"สุพรรณบุรี",    cst:381,  csfin_t:325, csfin_r:42,  csfin_p:12.9,csi_t:195, csi_r:151, csi_p:77.4,csl_t:6.5,  csl_r:0.83, csl_p:12.8 },
-      { province:"นครราชสีมา",   cst:1056, csfin_t:683, csfin_r:78,  csfin_p:11.4,csi_t:410, csi_r:115, csi_p:28.0,csl_t:13.66,csl_r:0,    csl_p:0 },
-      { province:"บุรีรัมย์",     cst:645,  csfin_t:715, csfin_r:433, csfin_p:60.6,csi_t:429, csi_r:414, csi_p:96.5,csl_t:14.3, csl_r:0.2,  csl_p:1.4 },
-      { province:"สุรินทร์",      cst:1018, csfin_t:1040,csfin_r:842, csfin_p:81.0,csi_t:624, csi_r:520, csi_p:83.3,csl_t:20.8, csl_r:0,    csl_p:0 },
-      { province:"ศรีสะเกษ",     cst:389,  csfin_t:748, csfin_r:185, csfin_p:24.7,csi_t:449, csi_r:150, csi_p:33.4,csl_t:14.96,csl_r:0,    csl_p:0 },
-      { province:"อุบลราชธานี",  cst:298,  csfin_t:553, csfin_r:95,  csfin_p:17.2,csi_t:332, csi_r:75,  csi_p:22.6,csl_t:11.06,csl_r:0,    csl_p:0 },
-      { province:"ร้อยเอ็ด",     cst:804,  csfin_t:780, csfin_r:2,   csfin_p:0.3, csi_t:468, csi_r:22,  csi_p:4.7, csl_t:15.6, csl_r:0,    csl_p:0 },
-      { province:"กาฬสินธุ์",     cst:329,  csfin_t:489, csfin_r:275, csfin_p:56.2,csi_t:293, csi_r:271, csi_p:92.5,csl_t:9.78, csl_r:0,    csl_p:0 },
-      { province:"เชียงใหม่",    cst:251,  csfin_t:358, csfin_r:78,  csfin_p:21.8,csi_t:215, csi_r:95,  csi_p:44.2,csl_t:7.16, csl_r:0,    csl_p:0 },
-      { province:"เชียงราย",     cst:424,  csfin_t:423, csfin_r:0,   csfin_p:0,   csi_t:254, csi_r:76,  csi_p:29.9,csl_t:8.46, csl_r:0,    csl_p:0 },
-      { province:"นครสวรรค์",    cst:155,  csfin_t:390, csfin_r:0,   csfin_p:0,   csi_t:234, csi_r:27,  csi_p:11.5,csl_t:7.8,  csl_r:0.56, csl_p:7.2 },
-      { province:"อุทัยธานี",    cst:741,  csfin_t:520, csfin_r:17,  csfin_p:3.3, csi_t:312, csi_r:0,   csi_p:0,   csl_t:10.4, csl_r:0,    csl_p:0 },
-      { province:"กำแพงเพชร",    cst:0,    csfin_t:390, csfin_r:0,   csfin_p:0,   csi_t:234, csi_r:0,   csi_p:0,   csl_t:7.8,  csl_r:0,    csl_p:0 },
-      { province:"พิษณุโลก",     cst:1282, csfin_t:390, csfin_r:14,  csfin_p:3.6, csi_t:234, csi_r:41,  csi_p:17.5,csl_t:7.8,  csl_r:0,    csl_p:0 },
-      { province:"พิจิตร",       cst:289,  csfin_t:423, csfin_r:0,   csfin_p:0,   csi_t:254, csi_r:50,  csi_p:19.7,csl_t:8.46, csl_r:0,    csl_p:0 }
+      { province:"นครราชสีมา",   cst:948,  csfin_t:683, csfin_r:78,  csfin_p:11.4,csi_t:410, csi_r:142, csi_p:34.6,csl_t:13.66,csl_r:0,    csl_p:0 },
+      { province:"บุรีรัมย์",     cst:783,  csfin_t:715, csfin_r:433, csfin_p:60.6,csi_t:429, csi_r:425, csi_p:99.1,csl_t:14.3, csl_r:0.2,  csl_p:1.4 },
+      { province:"สุรินทร์",      cst:1332, csfin_t:1040,csfin_r:842, csfin_p:81.0,csi_t:624, csi_r:562, csi_p:90.1,csl_t:20.8, csl_r:0,    csl_p:0 },
+      { province:"ศรีสะเกษ",     cst:506,  csfin_t:748, csfin_r:185, csfin_p:24.7,csi_t:449, csi_r:151, csi_p:33.6,csl_t:14.96,csl_r:0,    csl_p:0 },
+      { province:"อุบลราชธานี",  cst:282,  csfin_t:553, csfin_r:95,  csfin_p:17.2,csi_t:332, csi_r:205, csi_p:61.7,csl_t:11.06,csl_r:0,    csl_p:0 },
+      { province:"ร้อยเอ็ด",     cst:559,  csfin_t:780, csfin_r:2,   csfin_p:0.3, csi_t:468, csi_r:22,  csi_p:4.7, csl_t:15.6, csl_r:0,    csl_p:0 },
+      { province:"กาฬสินธุ์",     cst:376,  csfin_t:489, csfin_r:275, csfin_p:56.2,csi_t:293, csi_r:271, csi_p:92.5,csl_t:9.78, csl_r:0,    csl_p:0 },
+      { province:"เชียงใหม่",    cst:284,  csfin_t:358, csfin_r:78,  csfin_p:21.8,csi_t:215, csi_r:95,  csi_p:44.2,csl_t:7.16, csl_r:0,    csl_p:0 },
+      { province:"เชียงราย",     cst:403,  csfin_t:423, csfin_r:0,   csfin_p:0,   csi_t:254, csi_r:76,  csi_p:29.9,csl_t:8.46, csl_r:0,    csl_p:0 },
+      { province:"นครสวรรค์",    cst:155,  csfin_t:390, csfin_r:0,   csfin_p:0,   csi_t:234, csi_r:47,  csi_p:20.1,csl_t:7.8,  csl_r:0.56, csl_p:7.2 },
+      { province:"อุทัยธานี",    cst:788,  csfin_t:520, csfin_r:17,  csfin_p:3.3, csi_t:312, csi_r:14,  csi_p:4.5, csl_t:10.4, csl_r:0,    csl_p:0 },
+      { province:"กำแพงเพชร",    cst:282,  csfin_t:390, csfin_r:0,   csfin_p:0,   csi_t:234, csi_r:0,   csi_p:0,   csl_t:7.8,  csl_r:0,    csl_p:0 },
+      { province:"พิษณุโลก",     cst:1364, csfin_t:390, csfin_r:14,  csfin_p:3.6, csi_t:234, csi_r:41,  csi_p:17.5,csl_t:7.8,  csl_r:0,    csl_p:0 },
+      { province:"พิจิตร",       cst:289,  csfin_t:423, csfin_r:0,   csfin_p:0,   csi_t:254, csi_r:86,  csi_p:33.9,csl_t:8.46, csl_r:0,    csl_p:0 }
     ];
 
     const data = raw.map(p => {
@@ -522,9 +522,9 @@
     }).sort((a, b) => b.score - a.score);
 
     const total = {
-      cst: 9034,
+      cst: 9827,
       csfin_t: 10016, csfin_r: 2167, csfin_p: 21.6,
-      csi_t: 6011,    csi_r: 2085,  csi_p: 34.7,
+      csi_t: 6011,    csi_r: 2374,  csi_p: 39.5,
       csl_t: 200.32,  csl_r: 1.59,  csl_p: 0.8
     };
 
