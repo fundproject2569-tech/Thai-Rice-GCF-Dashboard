@@ -530,6 +530,7 @@
 
     const gapCsfin = total.csfin_t - total.csfin_r;
     const gapCsi = total.csi_t - total.csi_r;
+    const gapCsl = Math.round((total.csl_t - total.csl_r) * 100) / 100;
     const REMAINING_MONTHS = 3;
 
     function pctClass(pct) {
@@ -584,7 +585,8 @@
           <div class="card-result" style="color:#b45309">${formatNum(gapCsfin)}</div>
           <div class="card-target">
             CS-FIN คงเหลือ ${formatNum(gapCsfin)} ราย<br>
-            CSI คงเหลือ ${formatNum(gapCsi)} ราย
+            CSI คงเหลือ ${formatNum(gapCsi)} ราย<br>
+            CSL คงเหลือ ${formatNum(gapCsl)} ล้านบาท
           </div>
           <div class="progress-track">
             <div class="progress-fill" style="width:100%; background:#f59e0b; opacity:0.35"></div>
