@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>แดชบอร์ดติดตามโครงการ Thai Rice GCF</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0d9488;
+      --primary-dark: #0f766e;
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text: #1e293b;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Sarabun', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 1420px;
+      margin: 0 auto;
+      padding: 28px 18px 70px;
+    }
+    header { margin-bottom: 24px; }
+    .header-top {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 14px;
+    }
+    h1 {
+      font-size: 1.65rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      letter-spacing: -0.02em;
+    }
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 0.93rem;
+      margin-top: 3px;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #ecfdf5;
+      color: var(--primary-dark);
+      font-size: 0.84rem;
+      font-weight: 500;
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid #a7f3d0;
+    }
+    .metric-desc {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+    .desc-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 13px 15px;
+      font-size: 0.81rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+    .desc-card strong {
+      display: block;
+      color: var(--text);
+      font-size: 0.87rem;
+      margin-bottom: 3px;
+    }
+    .desc-card.csfin strong { color: #0284c7; }
+    .desc-card.csi strong { color: #059669; }
+    .desc-card.csl strong { color: #7c3aed; }
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+    .summary-card {
+      background: var(--card);
+      border-radius: 16px;
+      padding: 18px 20px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+    .summary-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 4px; height: 100%;
+    }
+    .summary-card.csfin::before { background: #0ea5e9; }
+    .summary-card.csi::before { background: #10b981; }
+    .summary-card.csl::before { background: #8b5cf6; }
+    .summary-card.gap::before { background: #f59e0b; }
+    .card-label {
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+    .card-pct {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 8px;
+    }
+    .card-result {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 2px;
+    }
+    .card-target {
+      font-size: 0.83rem;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+    .progress-track {
+      height: 7px;
+      background: #f1f5f9;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      border-radius: 999px;
+    }
+    .insight-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 26px;
+    }
+    @media (max-width: 800px) {
+      .insight-row { grid-template-columns: 1fr; }
+    }
+    .insight-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px 18px;
+    }
+    .insight-box h4 {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .insight-box.good h4 { color: #065f46; }
+    .insight-box.risk h4 { color: #9a3412; }
+    .insight-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .chip {
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 4px 10px;
+      border-radius: 8px;
+      background: #f1f5f9;
+      color: var(--text);
+    }
+    .chip.good { background: #d1fae5; color: #065f46; }
+    .chip.risk { background: #ffedd5; color: #9a3412; }
+    .chip.warn { background: #fef3c7; color: #92400e; }
+    .section-title {
+      font-size: 1.08rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .legend {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .legend-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+    }
+    .table-wrapper {
+      background: var(--card);
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      margin-bottom: 24px;
+    }
+    .table-scroll { overflow-x: auto; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+    thead { background: #f8fafc; }
+    th {
+      text-align: left;
+      padding: 11px 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+    th.center, td.center { text-align: center; }
+    td {
+      padding: 10px 11px;
+      border-bottom: 1px solid #f1f5f9;
+      vertical-align: middle;
+    }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: #fafafa; }
+    tr.total-row {
+      background: #f0fdfa !important;
+      font-weight: 600;
+    }
+    tr.total-row td {
+      border-top: 2px solid #99f6e4;
+    }
+    tr.row-risk td {
+      background: #fff7ed !important;
+    }
+    tr.row-noroster td {
+      background: #f8fafc !important;
+      opacity: 0.78;
+    }
+    .rank {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      font-size: 0.76rem;
+      font-weight: 700;
+      background: #f1f5f9;
+      color: var(--text-muted);
+    }
+    .rank.top1 { background: #fef3c7; color: #92400e; }
+    .rank.top2 { background: #e0e7ff; color: #3730a3; }
+    .rank.top3 { background: #fce7f3; color: #9d174d; }
+    .province-name {
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    .status-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-top: 4px;
+    }
+    .tag {
+      font-size: 0.68rem;
+      font-weight: 600;
+      padding: 1px 6px;
+      border-radius: 4px;
+    }
+    .tag-risk {
+      background: #ffedd5;
+      color: #9a3412;
+    }
+    .tag-noroster {
+      background: #e2e8f0;
+      color: #475569;
+    }
+    .metric-cell { min-width: 148px; }
+    .metric-numbers {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.82rem;
+      margin-bottom: 4px;
+    }
+    .metric-numbers .result {
+      font-weight: 700;
+      font-size: 0.96rem;
+      color: #0f172a;
+    }
+    .metric-numbers .target {
+      color: var(--text-muted);
+      font-size: 0.78rem;
+    }
+    .mini-progress {
+      height: 5px;
+      background: #f1f5f9;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .mini-fill {
+      height: 100%;
+      border-radius: 999px;
+    }
+    .pct-badge {
+      display: inline-block;
+      font-size: 0.74rem;
+      font-weight: 600;
+      padding: 2px 6px;
+      border-radius: 6px;
+      min-width: 46px;
+      text-align: center;
+    }
+    .pct-high { background: #d1fae5; color: #065f46; }
+    .pct-mid  { background: #fef3c7; color: #92400e; }
+    .pct-low  { background: #fee2e2; color: #991b1b; }
+    .monthly-need {
+      margin-top: 4px;
+      font-size: 0.7rem;
+      color: #b45309;
+      background: #fffbeb;
+      padding: 2px 6px;
+      border-radius: 5px;
+      display: inline-block;
+      white-space: nowrap;
+    }
+    .monthly-need.done {
+      color: #065f46;
+      background: #ecfdf5;
+    }
+    .cst-num {
+      font-weight: 700;
+      font-size: 1rem;
+      color: #0f172a;
+    }
+    .cst-num.zero {
+      color: #94a3b8;
+    }
+    .cst-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px 18px;
+      margin-bottom: 20px;
+    }
+    .cst-box h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: var(--primary-dark);
+    }
+    .cst-box p {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .footer-note {
+      padding: 13px 16px;
+      background: #fffbeb;
+      border: 1px solid #fde68a;
+      border-radius: 12px;
+      font-size: 0.81rem;
+      color: #92400e;
+    }
+    .footer-note strong {
+      display: block;
+      margin-bottom: 3px;
+    }
+    @media (max-width: 900px) {
+      h1 { font-size: 1.3rem; }
+      .card-pct { font-size: 1.55rem; }
+      .card-result { font-size: 1.15rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="header-top">
+        <div>
+          <h1>แดชบอร์ดติดตามโครงการ Thai Rice GCF</h1>
+          <p class="subtitle">เปรียบเทียบเป้าหมาย กับ ผลการดำเนินงาน รายจังหวัด</p>
+        </div>
+        <div class="badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>
+          </svg>
+          ข้อมูล ณ 5 พ.ย. 2569
+        </div>
+      </div>
+    </header>
+
+    <div class="metric-desc">
+      <div class="desc-card csfin">
+        <strong>CS-FIN</strong>
+        การอบรมหลักสูตรต่อยอดด้านการเงินและการลงทุน โดยพนักงานพัฒนาลูกค้าประจำจังหวัด
+      </div>
+      <div class="desc-card csi">
+        <strong>CSI</strong>
+        การสนับสนุนเงินอุดหนุนเพื่อเปลี่ยนแปลงการปลูกข้าวที่เท่าทันต่อภูมิอากาศ โดยสาขา
+      </div>
+      <div class="desc-card csl">
+        <strong>CSL</strong>
+        สินเชื่อ Thai Rice GCF Market Code: 3048
+      </div>
+    </div>
+
+    <div class="summary-grid" id="summaryCards"></div>
+
+    <div class="insight-row">
+      <div class="insight-box good">
+        <h4>🟢 สนจ. ที่ผลงานดี (Top 5)</h4>
+        <div class="insight-list" id="topList"></div>
+      </div>
+      <div class="insight-box risk">
+        <h4>🟠 สนจ. ที่ต้องเร่ง (At Risk) + ยังไม่มี CST</h4>
+        <div class="insight-list" id="riskList"></div>
+      </div>
+    </div>
+
+    <div class="section-title">
+      <span>ผลการดำเนินงานรายจังหวัด <span style="font-weight:400;font-size:0.84rem;color:var(--text-muted)">(เรียงลำดับจาก สนจ. ที่มีผลการดำเนินงานสูงสุด - น้อยที่สุด)</span></span>
+      <div class="legend">
+        <div class="legend-item"><div class="legend-dot" style="background:#10b981"></div> ≥ 70%</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#f59e0b"></div> 30–69%</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#ef4444"></div> &lt; 30%</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#94a3b8"></div> ยังไม่มีรายชื่อ CST</div>
+      </div>
+    </div>
+
+    <div class="table-wrapper">
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th class="center" style="width:48px">อันดับ</th>
+              <th>จังหวัด</th>
+              <th class="center">CST<br><span style="font-weight:400;text-transform:none;letter-spacing:0">(ราย)</span></th>
+              <th class="center">CS-FIN (ราย)</th>
+              <th class="center">CSI (ราย)</th>
+              <th class="center">CSL (ล้านบาท)</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="cst-box">
+      <h3>CST — รายชื่อเกษตรกรที่ผ่านการอบรมเทคโนโลยี</h3>
+      <p>
+        CST หมายถึง รายชื่อเกษตรกรที่ผ่านการอบรมเทคโนโลยีจาก <strong>กรมการข้าว</strong> 
+        <strong>กรมส่งเสริมการเกษตร</strong> และ <strong>GIZ</strong> ที่ธนาคารได้รับ<br>
+        ตัวเลขในตารางเป็นยอดรวมผู้ผ่านการอบรม (ปี 2568 + 2569)
+      </p>
+    </div>
+
+    <div class="footer-note">
+      <strong>หมายเหตุ</strong>
+      *ข้อมูล ณ 5 พฤศจิกายน 2569<br>
+      *** เนื่องจากบาง สนจ. ยังไม่ได้รับรายชื่อจากกรมการข้าว กรมส่งเสริมการเกษตร และ GIZ จึงยังไม่สามารถดำเนินการได้<br>
+      ***จำนวน “ต้องดำเนินการเดือนละ” คำนวณจากยอดคงเหลือ ÷ 3 เดือนที่เหลือ (ธ.ค. 2569 – ก.พ. 2570)<br>
+      ****อันดับจังหวัดคำนวณจากค่าเฉลี่ยเปอร์เซ็นต์ของ CS-FIN + CSI + CSL (เรียงจากสูงสุดไปน้อยที่สุด)<br>
+      *****At Risk = ค่าเฉลี่ยเปอร์เซ็นต์ต่ำกว่า 20% และยังมียอดคงเหลือ CS-FIN หรือ CSI ค่อนข้างสูง
+    </div>
+  </div>
+
+  <script>
+    const raw = [
+      { province:"ปทุมธานี",     cst:0,    csfin_t:260, csfin_r:0,   csfin_p:0,   csi_t:156, csi_r:0,   csi_p:0,   csl_t:5.2,  csl_r:0,    csl_p:0 },
+      { province:"อยุธยา",       cst:0,    csfin_t:260, csfin_r:0,   csfin_p:0,   csi_t:156, csi_r:0,   csi_p:0,   csl_t:5.2,  csl_r:0,    csl_p:0 },
+      { province:"อ่างทอง",      cst:112,  csfin_t:293, csfin_r:90,  csfin_p:30.7,csi_t:176, csi_r:62,  csi_p:35.2,csl_t:5.86, csl_r:0,    csl_p:0 },
+      { province:"ลพบุรี",       cst:310,  csfin_t:293, csfin_r:0,   csfin_p:0,   csi_t:176, csi_r:0,   csi_p:0,   csl_t:5.86, csl_r:0,    csl_p:0 },
+      { province:"สิงห์บุรี",     cst:146,  csfin_t:293, csfin_r:6,   csfin_p:2.0, csi_t:176, csi_r:6,   csi_p:3.4, csl_t:5.86, csl_r:0,    csl_p:0 },
+      { province:"ชัยนาท",       cst:404,  csfin_t:390, csfin_r:10,  csfin_p:2.6, csi_t:234, csi_r:10,  csi_p:4.3, csl_t:7.8,  csl_r:0,    csl_p:0 },
+      { province:"สุพรรณบุรี",    cst:381,  csfin_t:325, csfin_r:42,  csfin_p:12.9,csi_t:195, csi_r:151, csi_p:77.4,csl_t:6.5,  csl_r:0.83, csl_p:12.8 },
+      { province:"นครราชสีมา",   cst:1056, csfin_t:683, csfin_r:78,  csfin_p:11.4,csi_t:410, csi_r:115, csi_p:28.0,csl_t:13.66,csl_r:0,    csl_p:0 },
+      { province:"บุรีรัมย์",     cst:645,  csfin_t:715, csfin_r:433, csfin_p:60.6,csi_t:429, csi_r:414, csi_p:96.5,csl_t:14.3, csl_r:0.2,  csl_p:1.4 },
+      { province:"สุรินทร์",      cst:1018, csfin_t:1040,csfin_r:842, csfin_p:81.0,csi_t:624, csi_r:520, csi_p:83.3,csl_t:20.8, csl_r:0,    csl_p:0 },
+      { province:"ศรีสะเกษ",     cst:389,  csfin_t:748, csfin_r:185, csfin_p:24.7,csi_t:449, csi_r:150, csi_p:33.4,csl_t:14.96,csl_r:0,    csl_p:0 },
+      { province:"อุบลราชธานี",  cst:298,  csfin_t:553, csfin_r:95,  csfin_p:17.2,csi_t:332, csi_r:75,  csi_p:22.6,csl_t:11.06,csl_r:0,    csl_p:0 },
+      { province:"ร้อยเอ็ด",     cst:804,  csfin_t:780, csfin_r:2,   csfin_p:0.3, csi_t:468, csi_r:22,  csi_p:4.7, csl_t:15.6, csl_r:0,    csl_p:0 },
+      { province:"กาฬสินธุ์",     cst:329,  csfin_t:489, csfin_r:275, csfin_p:56.2,csi_t:293, csi_r:271, csi_p:92.5,csl_t:9.78, csl_r:0,    csl_p:0 },
+      { province:"เชียงใหม่",    cst:251,  csfin_t:358, csfin_r:78,  csfin_p:21.8,csi_t:215, csi_r:95,  csi_p:44.2,csl_t:7.16, csl_r:0,    csl_p:0 },
+      { province:"เชียงราย",     cst:424,  csfin_t:423, csfin_r:0,   csfin_p:0,   csi_t:254, csi_r:76,  csi_p:29.9,csl_t:8.46, csl_r:0,    csl_p:0 },
+      { province:"นครสวรรค์",    cst:155,  csfin_t:390, csfin_r:0,   csfin_p:0,   csi_t:234, csi_r:27,  csi_p:11.5,csl_t:7.8,  csl_r:0.56, csl_p:7.2 },
+      { province:"อุทัยธานี",    cst:741,  csfin_t:520, csfin_r:17,  csfin_p:3.3, csi_t:312, csi_r:0,   csi_p:0,   csl_t:10.4, csl_r:0,    csl_p:0 },
+      { province:"กำแพงเพชร",    cst:0,    csfin_t:390, csfin_r:0,   csfin_p:0,   csi_t:234, csi_r:0,   csi_p:0,   csl_t:7.8,  csl_r:0,    csl_p:0 },
+      { province:"พิษณุโลก",     cst:1282, csfin_t:390, csfin_r:14,  csfin_p:3.6, csi_t:234, csi_r:41,  csi_p:17.5,csl_t:7.8,  csl_r:0,    csl_p:0 },
+      { province:"พิจิตร",       cst:289,  csfin_t:423, csfin_r:0,   csfin_p:0,   csi_t:254, csi_r:50,  csi_p:19.7,csl_t:8.46, csl_r:0,    csl_p:0 }
+    ];
+
+    const data = raw.map(p => {
+      const score = (p.csfin_p + p.csi_p + p.csl_p) / 3;
+      const remainCsfin = Math.max(0, p.csfin_t - p.csfin_r);
+      const remainCsi = Math.max(0, p.csi_t - p.csi_r);
+      const noRoster = p.cst === 0;
+      const atRisk = score < 20 && (remainCsfin > 80 || remainCsi > 50) && !noRoster;
+      return { ...p, score, remainCsfin, remainCsi, noRoster, atRisk };
+    }).sort((a, b) => b.score - a.score);
+
+    const total = {
+      cst: 9034,
+      csfin_t: 10016, csfin_r: 2167, csfin_p: 21.6,
+      csi_t: 6011,    csi_r: 2085,  csi_p: 34.7,
+      csl_t: 200.32,  csl_r: 1.59,  csl_p: 0.8
+    };
+
+    const gapCsfin = total.csfin_t - total.csfin_r;
+    const gapCsi = total.csi_t - total.csi_r;
+    const REMAINING_MONTHS = 3;
+
+    function pctClass(pct) {
+      if (pct >= 70) return 'pct-high';
+      if (pct >= 30) return 'pct-mid';
+      return 'pct-low';
+    }
+    function pctColor(pct) {
+      if (pct >= 70) return '#10b981';
+      if (pct >= 30) return '#f59e0b';
+      return '#ef4444';
+    }
+    function formatNum(n) {
+      if (n === null || n === undefined) return '–';
+      if (Number.isInteger(n)) return n.toLocaleString('th-TH');
+      return n.toLocaleString('th-TH', { maximumFractionDigits: 2 });
+    }
+    function monthlyNeed(target, result) {
+      const remain = Math.max(0, target - result);
+      if (remain === 0) return null;
+      return Math.ceil(remain / REMAINING_MONTHS);
+    }
+
+    function renderSummary() {
+      const cards = [
+        { key: 'csfin', label: 'CS-FIN', unit: 'ราย', color: '#0ea5e9' },
+        { key: 'csi',   label: 'CSI',    unit: 'ราย', color: '#10b981' },
+        { key: 'csl',   label: 'CSL',    unit: 'ล้านบาท', color: '#8b5cf6' }
+      ];
+      let html = cards.map(c => {
+        const t = total[`${c.key}_t`];
+        const r = total[`${c.key}_r`];
+        const p = total[`${c.key}_p`];
+        return `
+          <div class="summary-card ${c.key}">
+            <div class="card-label">${c.label}</div>
+            <div class="card-pct" style="color:${c.color}">${p.toFixed(1)}%</div>
+            <div class="card-result">${formatNum(r)}</div>
+            <div class="card-target">
+              ผลการดำเนินงานปีบัญชี 2569<br>
+              เป้าหมายการดำเนินงานปีบัญชี 2569 ${formatNum(t)} ${c.unit}
+            </div>
+            <div class="progress-track">
+              <div class="progress-fill" style="width:${Math.min(p,100)}%; background:${c.color}"></div>
+            </div>
+          </div>
+        `;
+      }).join('');
+      html += `
+        <div class="summary-card gap">
+          <div class="card-label">ยอดคงเหลือที่ต้องเร่ง</div>
+          <div class="card-result" style="color:#b45309">${formatNum(gapCsfin)}</div>
+          <div class="card-target">
+            CS-FIN คงเหลือ ${formatNum(gapCsfin)} ราย<br>
+            CSI คงเหลือ ${formatNum(gapCsi)} ราย
+          </div>
+          <div class="progress-track">
+            <div class="progress-fill" style="width:100%; background:#f59e0b; opacity:0.35"></div>
+          </div>
+        </div>
+      `;
+      document.getElementById('summaryCards').innerHTML = html;
+    }
+
+    function renderInsights() {
+      const top5 = data.slice(0, 5);
+      const risks = data.filter(p => p.atRisk);
+      const noRoster = data.filter(p => p.noRoster);
+
+      document.getElementById('topList').innerHTML = top5.map((p, i) =>
+        `<span class="chip good">${i+1}. ${p.province} (${p.score.toFixed(1)}%)</span>`
+      ).join('');
+
+      let riskHtml = risks.map(p =>
+        `<span class="chip risk">${p.province}</span>`
+      ).join('');
+      if (noRoster.length) {
+        riskHtml += noRoster.map(p =>
+          `<span class="chip warn">${p.province} (ยังไม่มี CST)</span>`
+        ).join('');
+      }
+      if (!riskHtml) riskHtml = '<span class="chip">ไม่มีจังหวัดที่เข้าข่าย At Risk</span>';
+      document.getElementById('riskList').innerHTML = riskHtml;
+    }
+
+    function renderTable() {
+      const rows = data.map((p, idx) => {
+        const rank = idx + 1;
+        const rankClass = rank === 1 ? 'top1' : rank === 2 ? 'top2' : rank === 3 ? 'top3' : '';
+        const csfinNeed = monthlyNeed(p.csfin_t, p.csfin_r);
+        const csiNeed   = monthlyNeed(p.csi_t, p.csi_r);
+
+        let rowClass = '';
+        if (p.noRoster) rowClass = 'row-noroster';
+        else if (p.atRisk) rowClass = 'row-risk';
+
+        let tags = '';
+        if (p.noRoster) tags += '<span class="tag tag-noroster">ยังไม่มีรายชื่อ CST</span>';
+        if (p.atRisk) tags += '<span class="tag tag-risk">ต้องเร่ง</span>';
+
+        return `
+          <tr class="${rowClass}">
+            <td class="center"><span class="rank ${rankClass}">${rank}</span></td>
+            <td>
+              <div class="province-name">${p.province}</div>
+              <div class="status-tags">${tags}</div>
+            </td>
+            <td class="center">
+              <span class="cst-num ${p.cst === 0 ? 'zero' : ''}">${formatNum(p.cst)}</span>
+            </td>
+            <td class="metric-cell">
+              <div class="metric-numbers">
+                <span class="result">${formatNum(p.csfin_r)}</span>
+                <span class="target">/ ${formatNum(p.csfin_t)}</span>
+              </div>
+              <div class="mini-progress">
+                <div class="mini-fill" style="width:${Math.min(p.csfin_p,100)}%; background:${pctColor(p.csfin_p)}"></div>
+              </div>
+              <div style="margin-top:4px; display:flex; justify-content:space-between; align-items:center; gap:4px; flex-wrap:wrap;">
+                <span class="pct-badge ${pctClass(p.csfin_p)}">${p.csfin_p.toFixed(1)}%</span>
+                ${csfinNeed !== null
+                  ? `<span class="monthly-need">ต้องดำเนินการเดือนละ ${formatNum(csfinNeed)} ราย</span>`
+                  : `<span class="monthly-need done">ครบแล้ว</span>`}
+              </div>
+            </td>
+            <td class="metric-cell">
+              <div class="metric-numbers">
+                <span class="result">${formatNum(p.csi_r)}</span>
+                <span class="target">/ ${formatNum(p.csi_t)}</span>
+              </div>
+              <div class="mini-progress">
+                <div class="mini-fill" style="width:${Math.min(p.csi_p,100)}%; background:${pctColor(p.csi_p)}"></div>
+              </div>
+              <div style="margin-top:4px; display:flex; justify-content:space-between; align-items:center; gap:4px; flex-wrap:wrap;">
+                <span class="pct-badge ${pctClass(p.csi_p)}">${p.csi_p.toFixed(1)}%</span>
+                ${csiNeed !== null
+                  ? `<span class="monthly-need">ต้องดำเนินการเดือนละ ${formatNum(csiNeed)} ราย</span>`
+                  : `<span class="monthly-need done">ครบแล้ว</span>`}
+              </div>
+            </td>
+            <td class="metric-cell">
+              <div class="metric-numbers">
+                <span class="result">${formatNum(p.csl_r)}</span>
+                <span class="target">/ ${formatNum(p.csl_t)}</span>
+              </div>
+              <div class="mini-progress">
+                <div class="mini-fill" style="width:${Math.min(p.csl_p,100)}%; background:${pctColor(p.csl_p)}"></div>
+              </div>
+              <div style="margin-top:4px; text-align:right">
+                <span class="pct-badge ${pctClass(p.csl_p)}">${p.csl_p.toFixed(1)}%</span>
+              </div>
+            </td>
+          </tr>
+        `;
+      }).join('');
+
+      const totalRow = `
+        <tr class="total-row">
+          <td></td>
+          <td class="province-name">รวมทั้งหมด</td>
+          <td class="center"><span class="cst-num">${formatNum(total.cst)}</span></td>
+          <td class="metric-cell">
+            <div class="metric-numbers">
+              <span class="result">${formatNum(total.csfin_r)}</span>
+              <span class="target">/ ${formatNum(total.csfin_t)}</span>
+            </div>
+            <div class="mini-progress">
+              <div class="mini-fill" style="width:${Math.min(total.csfin_p,100)}%; background:${pctColor(total.csfin_p)}"></div>
+            </div>
+            <div style="margin-top:4px; text-align:right">
+              <span class="pct-badge ${pctClass(total.csfin_p)}">${total.csfin_p.toFixed(1)}%</span>
+            </div>
+          </td>
+          <td class="metric-cell">
+            <div class="metric-numbers">
+              <span class="result">${formatNum(total.csi_r)}</span>
+              <span class="target">/ ${formatNum(total.csi_t)}</span>
+            </div>
+            <div class="mini-progress">
+              <div class="mini-fill" style="width:${Math.min(total.csi_p,100)}%; background:${pctColor(total.csi_p)}"></div>
+            </div>
+            <div style="margin-top:4px; text-align:right">
+              <span class="pct-badge ${pctClass(total.csi_p)}">${total.csi_p.toFixed(1)}%</span>
+            </div>
+          </td>
+          <td class="metric-cell">
+            <div class="metric-numbers">
+              <span class="result">${formatNum(total.csl_r)}</span>
+              <span class="target">/ ${formatNum(total.csl_t)}</span>
+            </div>
+            <div class="mini-progress">
+              <div class="mini-fill" style="width:${Math.min(total.csl_p,100)}%; background:${pctColor(total.csl_p)}"></div>
+            </div>
+            <div style="margin-top:4px; text-align:right">
+              <span class="pct-badge ${pctClass(total.csl_p)}">${total.csl_p.toFixed(1)}%</span>
+            </div>
+          </td>
+        </tr>
+      `;
+      document.getElementById('tableBody').innerHTML = rows + totalRow;
+    }
+
+    renderSummary();
+    renderInsights();
+    renderTable();
+  </script>
+</body>
+</html>
